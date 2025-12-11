@@ -1,0 +1,314 @@
+/* Theme tokens */
+:root {
+  --bg: #0f1220; --text: #eef0f7; --muted: #b8becc; --primary: #5b8cff;
+  --card: #171a2b; --border: #232842; --accent: #37d7b2; --warning: #ffb84a;
+  --shadow: 0 1px 0 rgba(0,0,0,.04);
+}
+[data-theme="light"] {
+  --bg: #f8fafc; --text: #0f1220; --muted: #3f4a63; --primary: #2155ff;
+  --card: #ffffff; --border: #e5e9f2; --accent: #0ea5e9; --warning: #ca8a04;
+  --shadow: 0 1px 0 rgba(0,0,0,.06);
+}
+
+/* Base */
+* { box-sizing: border-box }
+html, body { margin:0; padding:0 }
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6;
+}
+a { color: var(--primary); text-decoration: none }
+img { max-width: 100%; height: auto; border-radius: 8px }
+.container { width: min(1100px, 92%); margin: 0 auto }
+
+/* Header & nav */
+header {
+  position: sticky; top:0; z-index: 50; backdrop-filter: saturate(180%) blur(8px);
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+nav { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0 }
+.brand { display:flex; align-items:center; gap:12px }
+.brand img { width:36px; height:36px; border-radius:50% }
+.nav-links { display:flex; flex-wrap:wrap; gap:14px }
+.nav-links a { padding:8px 10px; border-radius:8px }
+.nav-actions { display:flex; align-items:center; gap:10px }
+
+/* Buttons */
+.btn {
+  display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px;
+  border:1px solid var(--border); background: var(--card); color: var(--text); transition: filter .2s ease;
+}
+.btn.primary { background: var(--primary); border-color: transparent; color: white }
+.btn.ghost { background: transparent }
+.btn:hover { filter: brightness(1.05) }
+
+/* Hero */
+.hero { padding: 40px 0 18px }
+.hero-grid { display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px }
+.chip { display:inline-flex; align-items:center; gap:8px; border:1px dashed var(--border); padding:6px 10px; border-radius: 999px; color: var(--muted) }
+h1 { font-size: clamp(28px, 6vw, 44px); line-height: 1.15; margin: 10px 0 }
+h2 { font-size: clamp(22px, 4.5vw, 30px); margin: 18px 0 }
+p.lead { font-size: clamp(15px, 2.8vw, 18px); color: var(--muted) }
+.cta { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap }
+
+/* Shared layout */
+.section { padding: 24px 0 }
+.sec-head { display:flex; align-items:end; justify-content:space-between; flex-wrap:wrap; gap:12px }
+.tags { display:flex; flex-wrap:wrap; gap:8px }
+.tag { border:1px solid var(--border); color: var(--muted); border-radius:999px; padding:6px 10px; font-size: 13px }
+
+.grid { display:grid; gap:16px }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.list { display:grid; gap:10px; padding:0; margin:0; list-style:none }
+.list li { display:flex; align-items:flex-start; gap:10px }
+.label { font-weight:600 }
+.muted { color: var(--muted) }
+
+/* Resume */
+.resume-item { display:grid; grid-template-columns: 150px 1fr; gap:14px }
+.resume-item .title { font-weight: 600 }
+
+/* Project */
+.project { display:grid; grid-template-columns: 1fr 1fr; gap: 14px }
+.project .meta { display:flex; flex-wrap:wrap; gap: 8px; color: var(--muted) }
+.project-actions { margin-top:8px }
+
+/* Tools */
+.tools { display:flex; flex-wrap:wrap; gap:10px }
+.tool { background: var(--card); border:1px solid var(--border); padding: 8px 12px; border-radius: 10px }
+
+/* Testimony */
+.testimony { display:flex; gap:14px; align-items:flex-start }
+.avatar { width:42px; height:42px; border-radius:999px; object-fit:cover }
+
+/* Contact */
+.contact { display:grid; grid-template-columns: 1fr 1fr; gap: 18px }
+input, textarea, select {
+  width: 100%; padding: 10px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--card);
+  color: var(--text)
+}
+label { font-weight: 600; margin-bottom: 6px; display:block }
+.form-group { margin-bottom: 12px }
+.error { color: #ff6b6b; font-size: 12px; min-height: 14px; display:block }
+
+/* Footer */
+footer { border-top:1px solid var(--border); padding: 18px 0; color: var(--muted) }
+.footer-wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px }
+.socials { display:flex; gap:12px }
+
+/* Accessibility */
+.sr-only {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-grid, .project, .contact { grid-template-columns: 1fr }
+  .resume-item { grid-template-columns: 1fr }
+}
+@media (max-width: 620px) {
+  nav { flex-direction: column; align-items: flex-start }
+  .nav-links { gap: 8px }
+}
+/* Transisi umum */
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover efek pada card */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Animasi fade-in saat muncul */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth hover untuk tombol */
+.btn {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Efek link nav */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hamburger button */
+.hamburger {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  display: none; /* default hidden */
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 10px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Efek shadow default untuk card dan tombol */
+.card, .btn {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover: bayangan lebih tebal */
+.card:hover, .btn:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+}
+
+/* Efek saat tombol ditekan (klik) */
+.btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25) inset;
+}
+
+/* Efek saat card ditekan */
+.card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25) inset;
+}
+
+/* Fokus (keyboard navigation) */
+.btn:focus, .nav-links a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+/* Ripple effect */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Section spacing */
+.section {
+  padding: 60px 0; /* lebih lega antar section */
+}
+
+/* Container spacing */
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 0 16px; /* beri ruang kiri-kanan */
+}
+
+/* Heading spacing */
+h1, h2, h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 16px;
+}
+
+/* List spacing */
+.list li {
+  margin-bottom: 10px;
+}
+
+/* Card spacing */
+.card {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* Grid spacing */
+.grid {
+  gap: 24px; /* jarak antar item grid lebih lega */
+}
+
+/* Tags spacing */
+.tags {
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Contact form spacing */
+.form-group {
+  margin-bottom: 18px;
+}
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Footer spacing */
+footer {
+  margin-top: 40px;
+  padding: 24px 0;
+}
+.footer-wrap {
+  gap: 20px;
+}
